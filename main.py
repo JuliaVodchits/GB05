@@ -6,12 +6,15 @@ class Image():
         self.__image = pygame.image.load(path)
         self.speed = speed
         self.__rect = self.__image.get_rect()
-        self.x = self.__rect.x
-        self.y = self.__rect.y
         self.width = self.__rect.width
         self.height = self.__rect.height
-        # print(f"{self.width} x {self.height}")
 
+    def x(self):
+        return self.__rect.x
+    
+    def y(self):
+        return self.__rect.y
+        
     def set_x(self, new_x):
         self.__rect.x = new_x
 
@@ -23,6 +26,8 @@ class Image():
 
     def image(self):
         return self.__image
+
+
 
 pygame.init()
 
@@ -50,34 +55,34 @@ while running:
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_LEFT]:
-        x = img_packman.x - img_packman.speed
+        x = img_packman.x() - img_packman.speed
         if x < 0:
             x = 0
         img_packman.set_x(x)
 
     if keys[pygame.K_RIGHT]:
-        x = img_packman.x + img_packman.speed
+        x = img_packman.x() + img_packman.speed
         if x > window_size[0] - img_packman.width:
             x = window_size[0] - img_packman.width
-        img_packman._Image__rect.x = x
-        # img_packman.set_x(x)
+        img_packman.set_x(x)
 
     if keys[pygame.K_UP]:
-        y = img_packman.y - img_packman.speed
+        y = img_packman.y() - img_packman.speed
         if y < 0:
             y = 0
-        img_packman.set_x(y)
+        img_packman.set_y(y)
 
     if keys[pygame.K_DOWN]:
-        y = img_packman.y + img_packman.speed
+        y = img_packman.y() + img_packman.speed
         if y > window_size[1] - img_packman.height:
             y = window_size[1] - img_packman.height
-        img_packman.set_x(y)
+        img_packman.set_y(y)
 
     img_monster1.set_x(window_size[0] - img_monster1.width)
     img_monster1.set_y(window_size[1] - img_monster1.height)
 
-    # if img_packman.__rect.colliderect(img_monster1.__rect)
+    if img_packman.rect().colliderect(img_monster1.rect()):
+
 
     screen.fill((255, 255, 255))
     screen.blit(img_packman.image(), img_packman.rect())

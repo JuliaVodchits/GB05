@@ -1,2 +1,1 @@
-# Zerocoder Python GB05
-Изучим основные функции Pygame
+# Zerocoder Python OB05. Изучение работы с библиотекой Pygame

@@ -196,16 +196,12 @@ while running:
 
     # передвижение Pacman - клавишами
     keys = pygame.key.get_pressed()
-
     if keys[pygame.K_LEFT]:
         pacman.move_left()
-
     if keys[pygame.K_RIGHT]:
         pacman.move_right()
-
     if keys[pygame.K_UP]:
         pacman.move_up()
-
     if keys[pygame.K_DOWN]:
         pacman.move_down()
 
@@ -229,6 +225,7 @@ while running:
                 obj.img.set_start_position()
         time.sleep(1)
 
+    # переназначение места пищи, если пришло время
     cherry.positioning()
 
     # Пэкмэн съел еду
@@ -236,10 +233,9 @@ while running:
         scores += 1
         display.set_caption()
         cherry.timer = 0
+        # назначение нового места пищи
         cherry.positioning()
         time.sleep(1)
-
-    # отрисовка пищи
 
     display.screen_fill()
     display.screen_blit(pacman.img)

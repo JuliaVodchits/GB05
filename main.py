@@ -10,6 +10,7 @@ objects = None
 HP = 3
 scores = 0
 
+# Класс для работы с экраном
 class Display():
     def __init__(self):
         self.__window_color = (255, 255, 255)
@@ -36,6 +37,7 @@ class Display():
         pygame.time.wait(timer)
 
 
+# Класс для описания спрайтов
 class Image():
     def __init__(self, path, position=''):
         self.__image = pygame.image.load(path)
@@ -82,6 +84,7 @@ class Image():
                 self.x = WINDOW_SIZE[0] - self.width
                 self.y = WINDOW_SIZE[1] - self.height
 
+# Класс "Героя"
 class Pacman:
     def __init__(self, position):
         self.img = Image("img/pacman.png", position)
@@ -112,6 +115,7 @@ class Pacman:
             y = WINDOW_SIZE[1] - self.img.height
         self.img.y = y
 
+# Класс мостров
 class Monster:
     def __init__(self, img_path, position):
         self.img = Image(img_path, position)
@@ -142,6 +146,7 @@ class Monster:
             self.img.y = y
 
 
+# Класс еды для Пэкмэна
 class Food:
     def __init__(self, img_path):
         self.img = Image(path=img_path)
